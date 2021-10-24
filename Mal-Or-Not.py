@@ -37,7 +37,7 @@ def IP():
 	clickentry()
 
 def Domain():
-	subprocess.call(['python3','whoisinfo.py'])
+	subprocess.call(['python3',WhoIsInfo.py'])
 
 def Email():
 	global typeid
