@@ -34,7 +34,7 @@ rootentry.geometry("410x600+670+300")
 main_frame=Frame(rootentry)
 main_frame.pack(fill=BOTH, expand=1)
 
-my_canvas=Canvas(main_frame)
+my_canvas=Canvas(main_frame, bg='black', bd=0, highlightthickness=0, relief='ridge')
 my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 
 my_scrollbar=ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
@@ -43,29 +43,29 @@ my_scrollbar.pack(side=RIGHT, fill=Y)
 my_canvas.configure(yscrollcommand=my_scrollbar.set)
 my_canvas.bind('<Configure>', lambda e:my_canvas.configure(scrollregion=my_canvas.bbox("all")))
 
-second_frame=Frame(my_canvas)
+second_frame=Frame(my_canvas, bg='black')
 
 my_canvas.create_window((0,0), window=second_frame, anchor='nw')
 
-
-my_canvas1 = Canvas(second_frame, width=400, height=2000, bd=0, highlightthickness=0, bg="black")
-my_canvas1.pack(fill="both", expand=True)
-n=30
+row=0
+col=0
 for i in w.keys():
     if i != 'status':
-        my_canvas1.create_text(70,n, text=i.capitalize().replace("_", " ")+":", font=("Helvetica", 12,'bold'), fill="lime")
-        n+=20
+        col=0
+        text_key= Label(second_frame, text=i.capitalize().replace("_", " ")+":", font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+        col+=1
         if (w[i]!=None):
             if (type(w[i]) is list):
                 dlen=len(w[i])
                 for j in range(0,dlen):
-                    my_canvas1.create_text(250,n, text=w[i][j], font=("Helvetica", 12,'bold'), fill="lime")
-                    n+=20
+                    text_value= Label(second_frame, text=w[i][j], font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+                    row+=1
+
             else:
-                my_canvas1.create_text(250,n, text=w[i], font=("Helvetica", 12,'bold'), fill="lime")
-                n+=20
+                text_value= Label(second_frame, text=w[i], font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+                row+=1
         else:
-            my_canvas1.create_text(250,n, text='Not listed', font=("Helvetica", 12,'bold'), fill="lime")
-            n+=20
+            text_value= Label(second_frame, text='Not listed', font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+            row+=1
 
 rootentry.mainloop()
