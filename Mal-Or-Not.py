@@ -61,7 +61,7 @@ def IP():
 	rootentry = Tk()
 
 	rootentry.title('IP Information')
-	rootentry.geometry("410x600+670+300")
+	rootentry.geometry("410x600+670+370")
 
 	main_frame=Frame(rootentry)
 	main_frame.pack(fill=BOTH, expand=1)
@@ -80,13 +80,13 @@ def IP():
 	ip_canvas.create_window((0,0), window=second_frame, anchor='nw')
 
 
-	my_canvas1 = Canvas(second_frame, width=400, height=2000, bd=0, highlightthickness=0, bg="black")
+	my_canvas1 = Canvas(second_frame, width=900, height=2000, bd=0, highlightthickness=0, bg="black")
 	my_canvas1.pack(fill="both", expand=True)
 	
 	with open("output","r") as f:
 	    data=f.read()
 
-	my_canvas1.create_text(250,30, text=data, font=("Helvetica", 12,'bold'), fill="lime")
+	my_canvas1.create_text(400,150, text=data, font=("Helvetica", 12,'bold'), fill="lime", anchor='n')
 
 	rootentry.mainloop()
 
