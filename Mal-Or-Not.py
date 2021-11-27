@@ -51,44 +51,27 @@ def IP():
 	    inp=entry.get()
 	    print(typeid+":"+inp)
 	    rootentry.destroy()
+	    
+	    subprocess.check_output(["./mal-o-not.sh", "-i", inp])
+	    
+	    rootip = Tk()
+	    rootip.title('IP Information')
+	    rootip.geometry("850x500+670+300")
+	    
+	    my_canvas=Canvas(rootip, bg='black', bd=0, highlightthickness=0, relief='ridge')
+	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
+	    
+	    with open("current_ip_intel","r") as f:
+	    	data=f.read()
+	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+
+	    rootip.mainloop()
 
 	buttonentry=Button(rootentry, text="Done",font=("times",12),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=store)
 	buttonentry_window = ip_canvas.create_window(145,130, anchor='nw', window=buttonentry)
 
 	rootentry.mainloop()
-	subprocess.check_output(["./mal-o-not.sh", "-i", inp])
-
-	rootentry = Tk()
-
-	rootentry.title('IP Information')
-	rootentry.geometry("410x600+670+370")
-
-	main_frame=Frame(rootentry)
-	main_frame.pack(fill=BOTH, expand=1)
-
-	ip_canvas=Canvas(main_frame)
-	ip_canvas.pack(side=LEFT, fill=BOTH, expand=1)
-
-	my_scrollbar=ttk.Scrollbar(main_frame, orient=VERTICAL, command=ip_canvas.yview)
-	my_scrollbar.pack(side=RIGHT, fill=Y)
-
-	ip_canvas.configure(yscrollcommand=my_scrollbar.set)
-	ip_canvas.bind('<Configure>', lambda e:ip_canvas.configure(scrollregion=ip_canvas.bbox("all")))
-
-	second_frame=Frame(ip_canvas)
-
-	ip_canvas.create_window((0,0), window=second_frame, anchor='nw')
-
-
-	my_canvas1 = Canvas(second_frame, width=900, height=2000, bd=0, highlightthickness=0, bg="black")
-	my_canvas1.pack(fill="both", expand=True)
 	
-	with open("output","r") as f:
-	    data=f.read()
-
-	my_canvas1.create_text(400,150, text=data, font=("Helvetica", 12,'bold'), fill="lime", anchor='n')
-
-	rootentry.mainloop()
 
 def Domain():
 	subprocess.call(['python3','WhoIsInfo.py'])
