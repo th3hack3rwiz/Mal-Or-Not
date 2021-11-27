@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import ttk
+import requests
+import json
 import whois
 
 rootentry = Tk()
@@ -52,7 +54,7 @@ col=0
 for i in w.keys():
     if i != 'status':
         col=0
-        text_key= Label(second_frame, text=i.capitalize().replace("_", " ")+":", font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+        text_key= Label(second_frame, text=i.capitalize().replace("_", " ")+":", font='"Helvetica" 12', anchor="w", justify=LEFT, bg='black', fg='lime').grid(row=row, column=col)
         col+=1
         if (w[i]!=None):
             if (type(w[i]) is list):
@@ -67,5 +69,38 @@ for i in w.keys():
         else:
             text_value= Label(second_frame, text='Not listed', font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
             row+=1
+
+
+response = requests.get("https://ipqualityscore.com/api/json/url/52euadgGvFpxYkflxorqnBTwGY8mEwMi/"+inp)
+domainscorecheck=json.loads(response.text)
+
+for p in domainscorecheck.keys():
+    if p != 'domain_age':
+        col=0
+        text_key= Label(second_frame, text=p.capitalize().replace("_", " ")+":", anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+        col+=1
+        if (domainscorecheck[p]!=None):
+                if (type(domainscorecheck[p]) is list):
+                    checklen=len(domainscorecheck[p])
+                    for q in range(0,checklen):
+                        text_value= Label(second_frame, text=domainscorecheck[p][q], font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+                        row+=1
+                else:
+                    text_value= Label(second_frame, text=domainscorecheck[p], font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+                    row+=1
+        else:
+            text_value= Label(second_frame, text='Not listed', font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+            row+=1
+    else:
+        col=0
+        text_key= Label(second_frame, text=p.capitalize().replace("_", " ")+":", font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+        row+=1
+        for r in domainscorecheck[p].keys():
+           col=0
+           text_key= Label(second_frame, text="-"+r.capitalize().replace("_", " ")+":", font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+           col+=1
+           text_value= Label(second_frame, text=domainscorecheck[p][r], font='"Helvetica" 12', bg='black', fg='lime').grid(row=row, column=col)
+           row+=1
+
 
 rootentry.mainloop()
