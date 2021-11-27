@@ -5,19 +5,17 @@ function gatherIPIntel(){
 		  	cat test4.html | anew apiGeo-Location > geo
 		  	wget "https://ipqualityscore.com/api/json/ip/52euadgGvFpxYkflxorqnBTwGY8mEwMi/$1?strictness=0&allow_public_access_points=true&fast=true&lighter_penalties=true&mobile=true" --wait=3 -U 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36' --no-http-keep-alive --no-check-certificate --tries=1 -O log > /dev/null 2>&1
 		  	echo "  IP Address: $1" > current_ip_intel
-			cat current_ip_intel >>output
-		  	cat log | jq | grep -E "proxy|vpn|tor|fraud" | grep -v "active" | tr -d '\"' | sed 's/,//g' | sed 's/_/ /g' | sed 's/\<\([[:lower:]]\)\([[:alnum:]]*\)/\u\1\2/g' | tee -a output
-		  	cat geo | jq | grep -E '"country_name":|"city_name":|"zip_code":|"time_zone":|"isp":|"domain":|"region_name"|"latitude"|"longitude"' | sed 's/,//g'  | sed 's/"//g' | sed 's/\<\([[:lower:]]\)\([[:alnum:]]*\)/\u\1\2/g' | sed 's/_/ /g' | tee -a output
+		  	cat log | jq | grep -E "proxy|vpn|tor|fraud" | grep -v "active" | tr -d '\"' | sed 's/,//g' | sed 's/_/ /g' | sed 's/\<\([[:lower:]]\)\([[:alnum:]]*\)/\u\1\2/g' | tee -a current_ip_intel
+		  	cat geo | jq | grep -E '"country_name":|"city_name":|"zip_code":|"time_zone":|"isp":|"domain":|"region_name"|"latitude"|"longitude"' | sed 's/,//g'  | sed 's/"//g' | sed 's/\<\([[:lower:]]\)\([[:alnum:]]*\)/\u\1\2/g' | sed 's/_/ /g' | tee -a current_ip_intel
 		  	intel=$(cat geo | jq | grep -E '"country_name":|"city_name":|"zip_code":|"time_zone":|"isp":|"domain":|"region_name"|"latitude"|"longitude"' | sed 's/,//g'  | sed 's/"//g' | awk -F ": " '{print $2}' | sed 's/[[:space:]]/_/g' | xargs)
 		  lat=$(echo $intel | awk '{print $4}')
 		  long=$(echo $intel | awk '{print $5}')
 		  geoURL="https://www.gps-coordinates.net/latitude-longitude/$lat/$long/10/roadmap"
 		    echo -e "  Geographical Location: $geoURL" | tee -a current_ip_intel
-			cat current_ip_intel >>output
 		    time=$(timedatectl | head -n 1 | awk -F ":" '{print $2":"$3":"$4}') 
 		    echo "  Intel gathered at:$time" | tee -a current_ip_intel
 			cat current_ip_intel >>output
-			echo "\n">> output
+			printf "\n">> output
 rm apiGeo-Location geo test4.html log
 }
 
@@ -25,7 +23,6 @@ ip=${1}
 while getopts :i: fuzz_args; do 
 	case $fuzz_args in
 		i)
-			#echo -e "\n\n[+]Enabling JS files recon for target subdomains..." #provide subdomain list
 			iF=1
 			ip=$OPTARG
 			;;
