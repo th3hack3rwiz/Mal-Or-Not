@@ -52,7 +52,7 @@ def IP():
 	    print(typeid+":"+inp)
 	    rootentry.destroy()
 	    
-	    subprocess.check_output(["./mal-o-not.sh", "-i", inp])
+	    subprocess.check_output(["./ipintel.sh", "-i", inp])
 	    
 	    rootip = Tk()
 	    rootip.title('IP Information')
