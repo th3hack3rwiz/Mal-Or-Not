@@ -9,7 +9,7 @@ Mal-O-Not: Malicious Entity Detector
 4) Click on "SIGN UP FOR A TRIAL KEY"
 5) Check your inbox for API key.
 
-### Steps to get APU key for ipqualityscore
+### Steps to get API key for ipqualityscore
 
 1) Make an account on - https://www.ipqualityscore.com/create-account
 2) Activate your account.
@@ -22,3 +22,9 @@ Mal-O-Not: Malicious Entity Detector
 2) Activate your account
 3) Go to: https://www.virustotal.com/gui/user/<your username>/apikey
 4) Get your virustotal API key.
+
+### Steps to get API key for numverify
+
+1) Make an account on - https://numverify.com/signup
+2) Activate your account.
+3) Go to https://numverify.com/dashboard to get API key.
