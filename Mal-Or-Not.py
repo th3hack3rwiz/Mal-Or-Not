@@ -78,8 +78,43 @@ def Domain():
 
 def Email():
 	global typeid
-	typeid='Email'
-	clickentry()
+	typeid='email'
+	rootentry = Tk()
+	rootentry.title('Email Intel')
+	rootentry.geometry("350x200+670+300")
+	#bg= PhotoImage(file="matrixbg.png")
+	email_canvas = Canvas(rootentry, width=200, height=100, bd=0, highlightthickness=0, bg="green")
+	email_canvas.pack(fill="both", expand=True)
+
+	#my_canvas.create_image(0,0, image=bg, anchor="nw")
+	email_canvas.create_text(180,45, text="Enter Email Address:", font=("Helvetica", 18,'bold'), fill="white")
+	entry = Entry(rootentry, font=("Helvitica",12),width=13, fg="black", bd=0)
+	entry_window = email_canvas.create_window(115,80,anchor='nw', window=entry)
+	def store():
+	    global inp
+	    inp=entry.get()
+	    print(typeid+":"+inp)
+	    rootentry.destroy()
+	    
+	    subprocess.check_output(["./email.sh",inp])
+	    
+	    rootemail = Tk()
+	    rootemail.title('Email Information')
+	    rootemail.geometry("850x500+670+300")
+	    
+	    my_canvas=Canvas(rootemail, bg='black', bd=0, highlightthickness=0, relief='ridge')
+	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
+	    
+	    with open(inp.split("@")[0]+".report","r") as f:
+	    	data=f.read()
+	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+
+	    rootemail.mainloop()
+
+	buttonentry=Button(rootentry, text="Done",font=("times",12),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=store)
+	buttonentry_window = email_canvas.create_window(145,130, anchor='nw', window=buttonentry)
+
+	rootentry.mainloop()
 
 def phno():
 	global typeid
