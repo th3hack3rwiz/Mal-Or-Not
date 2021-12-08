@@ -12,6 +12,7 @@ read -p "Enter numverify API key:" numverify
 sed -i "s#XXXX#$virustotal#" urlreport.sh
 sed -i "s#YYYY#$ip2location#" ipintel.sh
 sed -i "s#ZZZZ#$ipquality#" ipintel.sh
+sed -i "s#ZZZZ#$ipquality#" WhoIsInfo.py
 sed -i "s#NNNN#$numverify#" number.sh
 chmod +x ipintel.sh
 chmod +x urlreport.sh
