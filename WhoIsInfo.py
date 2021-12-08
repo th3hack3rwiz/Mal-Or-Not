@@ -71,7 +71,7 @@ for i in w.keys():
             row+=1
 
 
-response = requests.get("https://ipqualityscore.com/api/json/url/52euadgGvFpxYkflxorqnBTwGY8mEwMi/"+inp)
+response = requests.get("https://ipqualityscore.com/api/json/url/ZZZZ/"+inp)
 domainscorecheck=json.loads(response.text)
 
 for p in domainscorecheck.keys():
