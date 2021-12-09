@@ -13,8 +13,8 @@ my_canvas = Canvas(root, width=200, height=100, bd=0, highlightthickness=0)
 my_canvas.pack(fill="both", expand=True)
 
 my_canvas.create_image(0,0, image=bg, anchor="nw")
-my_canvas.create_text(220,80, text="Welcome to", font=("Helvetica", 24,'bold'), fill="white")
-my_canvas.create_text(220,120, text="Mal-O-Not", font=("Helvetica", 24,'bold'), fill="white")
+text_key= Label(my_canvas, text="Welcome To", anchor="w", justify=LEFT, font='"Helvetica" 20', bg='black', fg='lime').place(relx = 0.5, rely = 0.35, anchor = 'center')
+text_key= Label(my_canvas, text="Mal-O-Not", anchor="w", justify=LEFT, font='"Helvetica" 20', bg='black', fg='lime').place(relx = 0.5, rely = 0.65, anchor = 'center')
 
 def destroy():
 	root.destroy()
@@ -30,7 +30,7 @@ my_canvas = Canvas(root, width=200, height=100, bd=0, highlightthickness=0)
 my_canvas.pack(fill="both", expand=True)
 
 my_canvas.create_image(0,0, image=bg, anchor="nw")
-my_canvas.create_text(220,30, text="Mal-Or-Not", font=("Helvetica", 24,'bold'), fill="white")
+text_key= Label(my_canvas, text="Mal-O-Not", anchor="w", justify=LEFT, font='"Helvetica" 20', bg='black', fg='lime').place(relx = 0.5, rely = 0.1, anchor = 'center')
 
 def IP():
 	global typeid
@@ -56,7 +56,7 @@ def IP():
 	    
 	    rootip = Tk()
 	    rootip.title('IP Information')
-	    rootip.geometry("850x500+670+300")
+	    rootip.geometry("800x300+670+300")
 	    
 	    my_canvas=Canvas(rootip, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
@@ -100,7 +100,7 @@ def Email():
 	    
 	    rootemail = Tk()
 	    rootemail.title('Email Information')
-	    rootemail.geometry("850x500+670+300")
+	    rootemail.geometry("250x200+670+300")
 	    
 	    my_canvas=Canvas(rootemail, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
@@ -140,7 +140,7 @@ def phno():
 	    
 	    rootphno = Tk()
 	    rootphno.title('Phone Number Information')
-	    rootphno.geometry("850x500+670+300")
+	    rootphno.geometry("320x170+670+300")
 	    
 	    my_canvas=Canvas(rootphno, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
