@@ -104,3 +104,19 @@ for p in domainscorecheck.keys():
 
 
 rootentry.mainloop()
+
+with open(inp+".domain.report", 'w') as f: 
+    for key, value in w.items():
+        if key != 'status':
+            f.write('%s:%s\n' % (key, value))
+    for key, value in domainscorecheck.items():
+        f.write('%s:%s\n' % (key, value))
+    f.write('\n')
+
+currentdomain=open(inp+".domain.report", 'r')
+readcurrent=currentdomain.read()
+currentdomain.close()
+
+maindomainfile=open("domain.report","a")
+maindomainfile.write(readcurrent)
+maindomainfile.close()
