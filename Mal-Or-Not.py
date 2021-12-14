@@ -105,7 +105,7 @@ def Email():
 	    my_canvas=Canvas(rootemail, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open(inp.split("@")[0]+".report","r") as f:
+	    with open(inp.split("@")[0]+".email.report","r") as f:
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
@@ -145,7 +145,7 @@ def phno():
 	    my_canvas=Canvas(rootphno, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open(inp+".report","r") as f:
+	    with open(inp+".number.report","r") as f:
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
