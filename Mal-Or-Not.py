@@ -71,7 +71,7 @@ def weather(city):
 	location = soup.select('#wob_loc')[0].getText().strip()
 	info = soup.select('#wob_dc')[0].getText().strip()
 	weather = soup.select('#wob_tm')[0].getText().strip()
-	weatherf=weather+"°C,"+info
+	weatherf=weather+"°C, "+info
 weather(city)
 
 root = Tk()
