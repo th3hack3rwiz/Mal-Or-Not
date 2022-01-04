@@ -19,7 +19,7 @@ vt_bigfile() {
     curl -s --request POST --url "$URL" --header "x-apikey: $APIKEY" --form "file=@$FILE" > $name.file.output1
 }
 FILE="$1"
-name=$(echo $FILE | awk -F "." '{print $1}')
+name=$(echo $FILE |awk -F "/" '{print $NF}' | awk -F "." '{print $1}')
 vt_file "$FILE"
 id=$(cat reverse.file.output1 | jq | grep id | awk -F "\"" '{print $4}')
 rm $name.file.output1
