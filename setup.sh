@@ -10,6 +10,7 @@ read -p "Enter ipqualityscore API key:" ipquality
 read -p "Enter virustotal API key:" virustotal
 read -p "Enter numverify API key:" numverify
 sed -i "s#XXXX#$virustotal#" urlreport.sh
+sed -i "s#XXXX#$virustotal#" file.sh
 sed -i "s#YYYY#$ip2location#" ipintel.sh
 sed -i "s#ZZZZ#$ipquality#" ipintel.sh
 sed -i "s#ZZZZ#$ipquality#" WhoIsInfo.py
