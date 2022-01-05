@@ -139,7 +139,7 @@ def IP():
 	    
 	    with open(inp+".ip.report","r") as f:
 	    	data=f.read()
-	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='white').grid(row=0, column=0)
 
 	    rootip.mainloop()
 
@@ -183,7 +183,7 @@ def Email():
 	    
 	    with open(inp.split("@")[0]+".email.report","r") as f:
 	    	data=f.read()
-	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='white').grid(row=0, column=0)
 
 	    rootemail.mainloop()
 
@@ -221,7 +221,7 @@ def phno():
 	    
 	    with open(inp+".number.report","r") as f:
 	    	data=f.read()
-	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='white').grid(row=0, column=0)
 
 	    rootphno.mainloop()
 
@@ -260,7 +260,7 @@ def link():
 	    
 	    with open(inp.split("/")[2]+".url.report","r") as f:
 	    	data=f.read()
-	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='white').grid(row=0, column=0)
 
 	    rooturl.mainloop()
 
@@ -291,11 +291,10 @@ def clickbrowse():
 		inp = filedialog.askopenfilename(initialdir = os.getcwd(), title = "Select a File", filetypes = (("Text files", "*.txt*"), ("all files", "*.*")))
 		subprocess.check_output(["./file.sh", inp])
 		rootbrowse.destroy()		
-		# text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
 		rootentry = Tk()
 		rootentry.title('File info')
-		rootentry.geometry("410x600+670+300")
+		rootentry.geometry("460x600+670+300")
 
 		main_frame=Frame(rootentry)
 		main_frame.pack(fill=BOTH, expand=1)
@@ -312,8 +311,12 @@ def clickbrowse():
 		my_canvas1.create_window((0,0), window=second_frame, anchor='nw')
 
 		with open(inp.split("/")[-1].split(".")[0]+".file.report","r") as f:
-			data=f.read()
-		text_key= Label(my_canvas1, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
+			data=f.readlines()
+			row=0
+			col=1
+			for i in data:
+				text_key= Label(second_frame, text=i, font='"Helvetica" 12', bg='black', fg='white').grid(row=row, column=col, sticky='w')
+				row+=1
 
 		rootentry.mainloop()
 	
