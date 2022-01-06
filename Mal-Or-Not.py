@@ -87,25 +87,25 @@ my_canvas.create_text(430,40, text="Mal-O", font=("Helvetica", 40,'bold'), fill=
 my_canvas.create_text(580,40, text="R-Not", font=("Helvetica", 40,'bold'), fill="black")
 
 def my_time():
-    time_string = strftime('%H:%M:%S %p \n %A \n %x') # time format 
+    time_string = strftime('%H:%M:%S %p\n%A\n%x')
     l1.config(text=time_string)
-    l1.after(1000,my_time) # time delay of 1000 milliseconds
-my_font=('times',15,'bold') # display size and style
-l1=Label(my_canvas,font=my_font,fg='black',bg='white')
-l1.grid(row=1,column=1,padx=880,pady=5)
+    l1.after(1000,my_time)
+my_font=('times',15,'bold')
+l1=Label(my_canvas, anchor="w", justify=LEFT, font=my_font,fg='white',bg='black')
+l1.grid(row=2,column=0,padx=10,pady=380, sticky='w')
 
 my_time()
 
-my_canvas.create_text(100,20, text=location, font=("times", 15,'bold'), fill="white")
-my_canvas.create_text(100,40, text=weatherf, font=("times", 15,'bold'), fill="white")
+llocation=Label(my_canvas, text=location, font=my_font,fg='white',bg='black').grid(row=0,column=0,padx=10,pady=5, sticky='w')
+lweather=Label(my_canvas, text=weatherf, font=my_font,fg='white',bg='black').grid(row=1,column=0,padx=10,pady=0, sticky='w')
 
 speed=float(data.split()[1])
 if speed < 100:
-	my_canvas.create_text(920,500, text=data, font=("times", 15,'bold'), fill="green")
+	my_canvas.create_text(920,30, text=data, font=("times", 15,'bold'), fill="green")
 elif speed > 100 and speed <250:
-	my_canvas.create_text(920,500, text=data, font=("times", 15,'bold'), fill="orange")
+	my_canvas.create_text(920,30, text=data, font=("times", 15,'bold'), fill="orange")
 else:
-    my_canvas.create_text(920,500, text=data, font=("times", 15,'bold'), fill="red")
+    my_canvas.create_text(920,30, text=data, font=("times", 15,'bold'), fill="red")
 
 
 def IP():
@@ -348,6 +348,6 @@ button6=Button(my_canvas, text="Files",font=("times",17,'bold'),width=5,padx=15,
 button6_window = my_canvas.create_window(600,380,anchor='nw', window=button6)
 
 button7=Button(my_canvas, text="Quit",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='red', bg='black', bd=0, command=clickquit, activebackground="red", activeforeground="black")
-button7_window = my_canvas.create_window(20,450,anchor='nw', window=button7)
+button7_window = my_canvas.create_window(890,450,anchor='nw', window=button7)
 
 root.mainloop()
