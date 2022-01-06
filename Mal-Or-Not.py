@@ -341,7 +341,7 @@ button3_window = my_canvas.create_window(300,380,anchor='nw', window=button3)
 button4=Button(my_canvas, text="Domain",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=Domain, activebackground="white", activeforeground="black")
 button4_window = my_canvas.create_window(600,100,anchor='nw', window=button4)
 
-button5=Button(my_canvas, text="Phone no.",font=("times",17,'bold'),width=7,padx=15, pady=10, fg='white', bg='black', bd=0, command=link, activebackground="white", activeforeground="black")
+button5=Button(my_canvas, text="Phone no.",font=("times",17,'bold'),width=7,padx=15, pady=10, fg='white', bg='black', bd=0, command=phno, activebackground="white", activeforeground="black")
 button5_window = my_canvas.create_window(700,240,anchor='nw', window=button5)
 
 button6=Button(my_canvas, text="Files",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=files, activebackground="white", activeforeground="black")
