@@ -181,7 +181,7 @@ def Email():
 	    my_canvas=Canvas(rootemail, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open(inp.split("@")[0]+".email.report","r") as f:
+	    with open("output/email/"+inp.split("@")[0]+".email.report","r") as f:		# I changed
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
