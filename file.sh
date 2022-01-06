@@ -20,7 +20,8 @@ vt_bigfile() {
 }
 FILE="$1"
 name=$(echo $FILE |awk -F "/" '{print $NF}' | awk -F "." '{print $1}')
-echo -e "File: $1\n\nResult:">output/file/$name.file.report
+file_name=$(echo $FILE |awk -F "/" '{print $NF}')
+echo -e "File: $file_name\n\nResult:">output/file/$name.file.report
 vt_file "$FILE"
 id=$(cat $name.file.output1 | jq | grep id | awk -F "\"" '{print $4}')
 rm $name.file.output1
