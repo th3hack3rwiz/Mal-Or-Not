@@ -30,8 +30,15 @@ curl -s --request GET --url "https://www.virustotal.com/api/v3/analyses/$id" --h
 echo -e "According to VirusTotal API:\n" >> output/file/$name.file.report
 cat $name.file.output2 | grep -E "malicious|suspicious|undetected|harmless"  | grep -vE "category|result" | tr -d "\"," | sed 's/\<\([[:lower:]]\)\([[:alnum:]]*\)/\u\1\2/g' | sed 's/^ *//g' | awk 'BEGIN{ RS = "" ; FS = "\n" }{print $3,"\n",$2,"\n",$1,"\n",$4}' | sed 's/^ *//g' >>output/file/$name.file.report
 mal_list=$(cat $name.file.output2 | grep -E "malicious" -A 5 | grep engine_name | awk -F "\"" '{print $4}' )
-result=$(for i in $(echo $mal_list); do result=$(cat $name.file.output2 | grep -w "$i\"" -A 3 | grep result | tr -d "\"," | awk -F ":" '{print $2}') ; echo "$i - $result" ; done
+
+if [ ! -z "$mal_list" ];
+then result=$(for i in $(echo $mal_list); do result=$(cat $name.file.output2 | grep -w "$i\"" -A 3 | grep result | tr -d "\"," | awk -F ":" '{print $2}') ; echo "$i - $result" ; done
 )
 echo -e "\nSources that say it is malicious:\n$result" >>output/file/$name.file.report
 cat output/file/$name.file.report>> output/file/file.master.report
+else 
+echo "The file appears to be safe to use! :D" >> output/url/$name.url.report
+fi
+
+
 rm $name.file.output2
