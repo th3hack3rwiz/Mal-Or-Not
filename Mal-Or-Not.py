@@ -137,7 +137,7 @@ def IP():
 	    my_canvas=Canvas(rootip, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open(inp+".ip.report","r") as f:
+	    with open("output/ip/"+inp+".ip.report","r") as f:
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
@@ -219,7 +219,7 @@ def phno():
 	    my_canvas=Canvas(rootphno, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open(inp+".number.report","r") as f:
+	    with open("output/number/"+inp+".number.report","r") as f:
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
@@ -258,7 +258,7 @@ def link():
 	    my_canvas=Canvas(rooturl, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open(inp.split("/")[2]+".url.report","r") as f:
+	    with open("output/url/"+inp.split("/")[2]+".url.report","r") as f:
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
@@ -311,7 +311,7 @@ def clickbrowse():
 		second_frame=Frame(my_canvas1, bg='black')
 		my_canvas1.create_window((0,0), window=second_frame, anchor='nw')
 
-		with open(inp.split("/")[-1].split(".")[0]+".file.report","r") as f:
+		with open("output/file/"+inp.split("/")[-1].split(".")[0]+".file.report","r") as f:
 			data=f.read()
 		text_key= Label(my_canvas1, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='lime').grid(row=0, column=0)
 
