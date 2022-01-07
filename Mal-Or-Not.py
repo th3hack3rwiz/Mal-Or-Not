@@ -176,12 +176,12 @@ def Email():
 	    
 	    rootemail = Tk()
 	    rootemail.title('Email Information')
-	    rootemail.geometry("250x200+670+300")
+	    rootemail.geometry("350x210+670+300")
 	    
 	    my_canvas=Canvas(rootemail, bg='black', bd=0, highlightthickness=0, relief='ridge')
 	    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 	    
-	    with open("output/email/"+inp.split("@")[0]+".email.report","r") as f:		# I changed
+	    with open("output/email/"+inp.split("@")[0]+".email.report","r") as f:		
 	    	data=f.read()
 	    text_key= Label(my_canvas, text=data, anchor="w", justify=LEFT, font='"Helvetica" 12', bg='black', fg='white').grid(row=0, column=0)
 
@@ -332,19 +332,19 @@ def clickquit():
 button1=Button(my_canvas, text="IP",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='black', bg='white', bd=0, command=IP, activebackground="black", activeforeground="white")
 button1_window = my_canvas.create_window(300,100,anchor='nw', window=button1)
 
-button2=Button(my_canvas, text="Email",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='black', bg='white', bd=0, command=Email, activebackground="black", activeforeground="white")
+button2=Button(my_canvas, text="E-mail",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='black', bg='white', bd=0, command=Email, activebackground="black", activeforeground="white")
 button2_window = my_canvas.create_window(200,240,anchor='nw', window=button2)
 
-button3=Button(my_canvas, text="Url",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='black', bg='white', bd=0, command=link, activebackground="black", activeforeground="white")
+button3=Button(my_canvas, text="URL",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='black', bg='white', bd=0, command=link, activebackground="black", activeforeground="white")
 button3_window = my_canvas.create_window(300,380,anchor='nw', window=button3)
 
 button4=Button(my_canvas, text="Domain",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=Domain, activebackground="white", activeforeground="black")
 button4_window = my_canvas.create_window(600,100,anchor='nw', window=button4)
 
-button5=Button(my_canvas, text="Phone no.",font=("times",17,'bold'),width=7,padx=15, pady=10, fg='white', bg='black', bd=0, command=phno, activebackground="white", activeforeground="black")
+button5=Button(my_canvas, text="Phone No.",font=("times",17,'bold'),width=7,padx=15, pady=10, fg='white', bg='black', bd=0, command=phno, activebackground="white", activeforeground="black")
 button5_window = my_canvas.create_window(700,240,anchor='nw', window=button5)
 
-button6=Button(my_canvas, text="Files",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=files, activebackground="white", activeforeground="black")
+button6=Button(my_canvas, text="File",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='white', bg='black', bd=0, command=files, activebackground="white", activeforeground="black")
 button6_window = my_canvas.create_window(600,380,anchor='nw', window=button6)
 
 button7=Button(my_canvas, text="Quit",font=("times",17,'bold'),width=5,padx=15, pady=7, fg='red', bg='black', bd=0, command=clickquit, activebackground="red", activeforeground="black")
