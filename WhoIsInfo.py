@@ -5,7 +5,7 @@ import json
 import whois
 
 rootentry = Tk()
-rootentry.title('Mal-Or-Not')
+rootentry.title('Domain Intel')
 rootentry.geometry("350x200+670+300")
 bg= PhotoImage(file="matrixbg.png")
 my_canvas = Canvas(rootentry, width=200, height=100, bd=0, highlightthickness=0, bg="green")
