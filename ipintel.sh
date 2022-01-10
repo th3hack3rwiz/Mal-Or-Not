@@ -12,8 +12,7 @@ function gatherIPIntel(){
 		  long=$(echo $intel | awk '{print $5}')
 		  geoURL="https://www.gps-coordinates.net/latitude-longitude/$lat/$long/10/roadmap"
 		    echo -e "  Geographical Location: $geoURL" >> output/ip/$1.ip.report
-		    time=$(timedatectl | head -n 1 | awk -F ":" '{print $2":"$3":"$4}') 
-		    echo "  Intel gathered at:$time" >> output/ip/$1.ip.report
+		    time=$(timedatectl | head -n 1 | awk -F ":" '{print $2":"$3":"$4}')
 		    cat output/ip/$1.ip.report >> output/ip/ip.master.report
 rm apiGeo-Location geo test4.html log
 }
