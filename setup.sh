@@ -27,9 +27,9 @@ mkdir output/number
 mkdir output/url
 mkdir output/file
 mkdir output/email
-mkdir -p result/ip
-mkdir result/domain
-mkdir result/number
-mkdir result/url
-mkdir result/file
-mkdir result/email
+mkdir -p reports/ip
+mkdir reports/domain
+mkdir reports/number
+mkdir reports/url
+mkdir reports/file
+mkdir reports/email
