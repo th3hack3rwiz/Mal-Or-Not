@@ -2,6 +2,7 @@
 sudo apt install python3-pip
 sudo apt-get install speedtest-cli
 pip install python-whois
+pip install fpdf
 pip install futures
 pip install PySocks
 sudo apt-get install figlet
