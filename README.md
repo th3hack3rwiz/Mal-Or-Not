@@ -1,5 +1,5 @@
-<p align="left">
-  <img width="500" height="90" src="https://th3hack3rwiz.github.io/images/Mal-OR-Not/title.png">
+<p align="center">
+  <img src="https://th3hack3rwiz.github.io/images/Mal-OR-Not/title.png">
 </p>
 
 # Mal-OR-Not
