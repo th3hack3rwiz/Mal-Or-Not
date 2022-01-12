@@ -2,7 +2,7 @@
 function gatherIPIntel(){
 #echo -e "${GREEN}[+] Gathering IP intel for $1\n"
 		  	wget "https://api.ip2location.com/v2/?key=YYYY&ip=$1&package=WS24&format=json&addon=continent,country,region,city,geotargeting,country_groupings,time_zone_info&lang=en" --wait=3 -U 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36' --no-http-keep-alive --no-check-certificate --tries=1 -O test4.html > /dev/null 2>&1
-		  	cat test4.html | anew apiGeo-Location > geo
+		  	cat test4.html | tee apiGeo-Location > geo
 		  	wget "https://ipqualityscore.com/api/json/ip/ZZZZ/$1?strictness=0&allow_public_access_points=true&fast=true&lighter_penalties=true&mobile=true" --wait=3 -U 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36' --no-http-keep-alive --no-check-certificate --tries=1 -O log > /dev/null 2>&1
 		  	echo -e "  IP Address: $1\n\nResult:\n" > output/ip/$1.ip.report
 		  	cat log | jq | grep -E "proxy|vpn|tor|fraud" | grep -v "active" | tr -d '\"' | sed 's/,//g' | sed 's/_/ /g' | sed 's/\<\([[:lower:]]\)\([[:alnum:]]*\)/\u\1\2/g' >> output/ip/$1.ip.report
